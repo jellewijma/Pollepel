@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/Style.css"/>
+    <script src="../JS/JS.js"></script>
 </head>
 <body>
 <header>
-    <div class="Search">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-    <h1>Japan</h1>
     <div class="Menu">
         <!-- Menu Button -->
         <span onclick="openNav()" class="spanButton">&#9776;</span>
@@ -59,6 +54,13 @@
             <li><a class="test" href="moreInfo.html">More Info</a></li>
         </ul>
     </div>
+    <div class="Search">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <h1>Japan</h1>
 </header>
 <main>
     <h2>Welcome</h2>
