@@ -10,6 +10,13 @@
 </head>
 <body>
 <header>
+    <div class="Search">
+        <form action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <h1>Japan</h1>
     <div class="Menu">
         <!-- Menu Button -->
         <span onclick="openNav()" class="spanButton">&#9776;</span>
@@ -54,13 +61,6 @@
             <li><a class="test" href="moreInfo.html">More Info</a></li>
         </ul>
     </div>
-    <div class="Search">
-        <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-    </div>
-    <h1>Japan</h1>
 </header>
 <main>
     <h2>Welcome</h2>
