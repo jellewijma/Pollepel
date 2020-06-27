@@ -9,6 +9,50 @@
     <script src="../JS/JS.js"></script>
 </head>
 <body>
+<div class="Menu">
+    <!-- Menu Button -->
+    <span onclick="openNav()" class="spanButton">&#9776;</span>
+
+    <!-- Menu -->
+    <ul id="mySidenav" class="sidenav">
+        <li>
+            <a
+                    class="test"
+                    href="javascript:void(0)"
+                    class="closebtn"
+                    onclick="closeNav()"
+            >&times;</a
+            >
+        </li>
+        <li>
+            <a class="test" href="#wrapTop" onclick="setTimeout(closeNav, 800)"
+            >ME</a
+            >
+        </li>
+        <li>
+            <a class="test" href="#photography" onclick="setTimeout(closeNav, 800)"
+            >Photography</a
+            >
+        </li>
+        <li>
+            <a
+                    class="test"
+                    href="#graphicDesign"
+                    onclick="setTimeout(closeNav, 800)"
+            >graphic Design</a
+            >
+        </li>
+        <li>
+            <a
+                    class="test"
+                    href="#WebDevelopment"
+                    onclick="setTimeout(closeNav, 800)"
+            >Web Development</a
+            >
+        </li>
+        <li><a class="test" href="moreInfo.html">More Info</a></li>
+    </ul>
+</div>
 <header>
     <div class="Search">
         <form action="/action_page.php">
@@ -17,50 +61,7 @@
         </form>
     </div>
     <h1>Japan</h1>
-    <div class="Menu">
-        <!-- Menu Button -->
-        <span onclick="openNav()" class="spanButton">&#9776;</span>
-
-        <!-- Menu -->
-        <ul id="mySidenav" class="sidenav">
-            <li>
-                <a
-                        class="test"
-                        href="javascript:void(0)"
-                        class="closebtn"
-                        onclick="closeNav()"
-                >&times;</a
-                >
-            </li>
-            <li>
-                <a class="test" href="#wrapTop" onclick="setTimeout(closeNav, 800)"
-                >ME</a
-                >
-            </li>
-            <li>
-                <a class="test" href="#photography" onclick="setTimeout(closeNav, 800)"
-                >Photography</a
-                >
-            </li>
-            <li>
-                <a
-                        class="test"
-                        href="#graphicDesign"
-                        onclick="setTimeout(closeNav, 800)"
-                >graphic Design</a
-                >
-            </li>
-            <li>
-                <a
-                        class="test"
-                        href="#WebDevelopment"
-                        onclick="setTimeout(closeNav, 800)"
-                >Web Development</a
-                >
-            </li>
-            <li><a class="test" href="moreInfo.html">More Info</a></li>
-        </ul>
-    </div>
+    <button>Sign-in</button>
 </header>
 <main>
     <h2>Welcome</h2>
