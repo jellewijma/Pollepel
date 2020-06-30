@@ -1,7 +1,5 @@
 <?php include('config.php')?>
 
-<<<<<<< Updated upstream
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +56,6 @@
 ?>
 
 
->>>>>>> Stashed changes
 <html>
 
 <body>
@@ -123,6 +120,11 @@
       echo "Foutmelding: " . mysqli_error($mysqli);
     }
 
+
+    $table = 'Beroeps_User';
+
+
+
     $phpFileUploadErrors = array(
         0 => 'There is no error, the file uploaded with success',
         1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
@@ -166,7 +168,7 @@ if(isset($_FILES['userfile'])){
             }
             else {
                 
-                $img_dir = 'web/'.$file_array[$i]['Name'];
+                $img_dir = 'Resorce/web/profile/'.$file_array[$i]['Name'];
                 
                 move_uploaded_file($file_array[$i]['tmp_name'], $img_dir);
                 
