@@ -38,7 +38,7 @@
             <button type="submit" class="btn" name="reg_user">Register</button>
         </div>
         <p>
-            Ben je al een gebruiker? <a href="login.php">Log in</a>
+            Ben je al een gebruiker? <a href="inlog.php">Log in</a>
         </p>
     </form>   
 </body>
