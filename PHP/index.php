@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (!isset($_SESSION['Gebruikersnaam'])) {
+$switch = "inlog";
+} else {
+  echo "test2";
+    $switch = "uitlog";
+if ($_SESSION['Level'] == 0) {
+echo "<p>U heeft geen rechten om deze pagina te bekijken.</p>";
+echo "<p><a href='artiest_uitlees.php'>Ga terug</a></p>";
+}
+}
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,7 +30,7 @@
         </form>
     </div>
     <h1>Japan</h1>
-    <button><a href="inlog.php">Sign-in</a></button>
+    <button><a href="<?php echo $switch; ?>.php"><?php echo $switch; ?></a></button>
     <div class="Menu">
         <!-- Menu Button -->
         <span onclick="openNav()" class="spanButton">&#9776;</span>

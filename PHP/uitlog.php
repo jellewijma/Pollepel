@@ -4,5 +4,5 @@ session_start();
 //Verwijder alle sessions
 session_destroy();
 //stuur de gebruiker naar de inlogpagina
-header("location:inlog.php");
+header("location:index.php");
 ?>
