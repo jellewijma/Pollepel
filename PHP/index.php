@@ -17,7 +17,7 @@
         </form>
     </div>
     <h1>Japan</h1>
-    <button>Sign-in</button>
+    <button><a href="inlog.php">Sign-in</a></button>
     <div class="Menu">
         <!-- Menu Button -->
         <span onclick="openNav()" class="spanButton">&#9776;</span>
