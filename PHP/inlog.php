@@ -35,6 +35,7 @@ session_start();
             //Zet de gebruikersnaam en level in 2 verschillende sessions
             $_SESSION['Gebruikersnaam'] = $user['UserName'];
             $_SESSION['Level'] = $user['Level'];
+            $_SESSION['User_ID'] = $user['User_ID'];
           header("Location: index.php");
           exit;
         } else {

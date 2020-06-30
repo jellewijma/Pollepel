@@ -55,7 +55,7 @@ $switch = "inlog";
                 >
             </li>
             <li>
-                <a class="test" href="mijnrecepten.php" onclick="setTimeout(closeNav, 800)"
+                <a class="test" href="mijn_recepten.php" onclick="setTimeout(closeNav, 800)"
                 >Mijn recepten</a
                 >
             </li>
