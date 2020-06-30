@@ -13,7 +13,6 @@
     </div>
 
     <form method="post" action="register.php">
-        <?php include('errors.php');?>
         <div class="input-group">
             <label>Volledige Naam</label>
             <input type="text" name="fullname" value="<?php echo $FullName; ?>">
@@ -62,41 +61,49 @@
     <table width="400" border="0">
         <tr>
             <td>:voor en achter naam</td>
-            <td><input type="text" id="Bandnaam" name="Bandnaam" value="" required></td>
+            <td><input type="text" id="Naam" name="Naam" value="" required></td>
         </tr>
         <tr>
             <td>Land van herkomst:</td>
-            <td><input type="text" id="afkomst" name="afkomst" value="<?php echo $rij['Land'] ?>" required></td>
+            <td><input type="text" id="Gebruikernaam" name="Gebruikernaam" value="" required></td>
         </tr>
         <tr>
             <td>Aantal leden:</td>
-            <td><input type="number" id="leden" name="leden" value="<?php echo $rij['AantalLeden'] ?>" required></td>
+            <td><input type="date" id="Date" name="Date" value="" required></td>
         </tr>
         <tr>
             <td>Soort muziek:</td>
-            <td><input type="text" id="muziek" name="muziek" value="<?php echo $rij['Muzieksoort'] ?>" required></td>
+            <td><input type="email" id="Email" name="Email" value="" required></td>
         </tr>
         <tr>
             <td>Algemene info:</td>
-            <td><input type="textbox" id="Algemene" name="Algemene" value="<?php echo $rij['Info'] ?>"></td>
+            <td><input type="password" id="Password" name="Password" value=""></td>
+        </tr>
+        <tr>
+            <td>Algemene info:</td>
+            <td><input type="text" id="Telefoonnummer" name="Telefoonnummer" value=""></td>
+        </tr>
+        <tr>
+            <td>Algemene info:</td>
+            <td><input type="text" id="profielfoto" name="profielfoto" value=""></td>
         </tr>
         <tr>
             <td></td>
             <td><input type="submit" value="submit" name="submit"></td>
         </tr>
     </table>
-    <a href='bands_uitlees.php'>Naar band lijst</a>
-    <p>&nbsp;</p>
   <?php
 
   if (isset($_POST['submit'])) {
     require('config.php');
 
-    $Bandnaam = $_POST['Bandnaam'];
-    $afkomst = $_POST['afkomst'];
-    $leden = $_POST['leden'];
-    $muziek = $_POST['muziek'];
-    $Algemene = $_POST['Algemene'];
+    $Naam = $_POST['Naam'];
+    $Gebruikernaam = $_POST['Gebruikernaam'];
+    $Date = $_POST['Date'];
+    $Email = $_POST['Email'];
+    $Password = $_POST['Password'];
+    $Telefoonnummer = $_POST['Telefoonnummer'];
+    $profielfoto = $_POST['profielfoto'];
 
     //maak de query:
     $opdracht = "INSERT INTO Beroeps-User VALUES (NULL, '$Naam', '$Gebruikernaam', '$Date', '$Email', '$Password', '$Telefoonnummer', '$profielfoto', '0')";
