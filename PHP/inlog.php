@@ -20,10 +20,11 @@ session_start();
         //Lees de gegevens uit
         $Gebruikersnaam = $_POST['Gebruikersnaam'];
         $Wachtwoord = $_POST['Wachtwoord'];
+        //$Wachtwoord = sha1($_POST['Wachtwoord']);
         //maar een query
-        $opdracht = "SELECT * FROM Beroeps-Users
+        $opdracht = "SELECT * FROM Beroeps_User
                  WHERE UserName = '$Gebruikersnaam'
-                 AND Password = '$Wachtwoord'";
+                 AND Wachtwoord = '$Wachtwoord'";
         //Voer de query uit en vang het resultaat op
         $resultaat = mysqli_query($mysqli, $opdracht);
         //controleer of het resultaat een rij (user) heeft opgeleverd
@@ -32,12 +33,10 @@ session_start();
             //haal de user uit het resultaat
             $user = mysqli_fetch_array($resultaat);
             //Zet de gebruikersnaam en level in 2 verschillende sessions
-            $_SESSION['Gebruikersnaam'] = $user['Gebruikersnaam'];
+            $_SESSION['Gebruikersnaam'] = $user['UserName'];
             $_SESSION['Level'] = $user['Level'];
-            //geef een melding
-            echo "<p>hallo $Gebruikersnaam, u bent ingelogd!</p>";
-            echo "<p><a href='bands_uitlees.php'>Ga naar band lijst</p>";
-            echo "<p><a href='artiest_uitlees.php'>Ga naar artiest lijst</p>";
+          header("Location: index.php");
+          exit;
         } else {
             echo "<p>Naam en/of wachtwoord zijn onjuist.</p>";
             echo "<p><a href='inlog.php'>Probeer opnieuw</p>";
