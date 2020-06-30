@@ -4,12 +4,7 @@ session_start();
 if (!isset($_SESSION['Gebruikersnaam'])) {
 $switch = "inlog";
 } else {
-  echo "test2";
     $switch = "uitlog";
-if ($_SESSION['Level'] == 0) {
-echo "<p>U heeft geen rechten om deze pagina te bekijken.</p>";
-echo "<p><a href='artiest_uitlees.php'>Ga terug</a></p>";
-}
 }
 ?>
 <html lang="en">
@@ -47,32 +42,23 @@ echo "<p><a href='artiest_uitlees.php'>Ga terug</a></p>";
                 >
             </li>
             <li>
-                <a class="test" href="#wrapTop" onclick="setTimeout(closeNav, 800)"
-                >ME</a
-                >
-            </li>
-            <li>
-                <a class="test" href="#photography" onclick="setTimeout(closeNav, 800)"
-                >Photography</a
-                >
-            </li>
-            <li>
                 <a
                         class="test"
-                        href="#graphicDesign"
+                        href="index.php"
                         onclick="setTimeout(closeNav, 800)"
-                >graphic Design</a
+                >home</a
                 >
             </li>
             <li>
-                <a
-                        class="test"
-                        href="#WebDevelopment"
-                        onclick="setTimeout(closeNav, 800)"
-                >Web Development</a
+                <a class="test" href="recepte_maken.php" onclick="setTimeout(closeNav, 800)"
+                >Recepten maken</a
                 >
             </li>
-            <li><a class="test" href="moreInfo.html">More Info</a></li>
+            <li>
+                <a class="test" href="mijnrecepten.php" onclick="setTimeout(closeNav, 800)"
+                >Mijn recepten</a
+                >
+            </li>
         </ul>
     </div>
 </header>
