@@ -21,9 +21,9 @@ session_start();
         $Gebruikersnaam = $_POST['Gebruikersnaam'];
         $Wachtwoord = $_POST['Wachtwoord'];
         //maar een query
-        $opdracht = "SELECT * FROM back_users
-                 WHERE Gebruikersnaam = '$Gebruikersnaam'
-                 AND Wachtwoord = '$Wachtwoord'";
+        $opdracht = "SELECT * FROM Beroeps-Users
+                 WHERE UserName = '$Gebruikersnaam'
+                 AND Password = '$Wachtwoord'";
         //Voer de query uit en vang het resultaat op
         $resultaat = mysqli_query($mysqli, $opdracht);
         //controleer of het resultaat een rij (user) heeft opgeleverd
@@ -62,7 +62,9 @@ session_start();
                 </tr>
             </table>
         </form>
-        <p>Inlog gegevens: jelle/wijma</p>
+        <p>Inlog gegevens: jelle/wijma</p><br>
+        <p>Nog geen gebruiker?</p>
+        <button><a href="register.php">registreer</a></button>
     <?php
     }
     ?>

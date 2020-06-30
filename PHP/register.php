@@ -1,4 +1,4 @@
-<?php include('server.php')?>
+<?php include('config.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,3 +51,66 @@
 
 
 ?>
+
+
+<html>
+
+<body>
+<h2>registreren</h2>
+
+<form name="form1" action="" method="POST">
+    <table width="400" border="0">
+        <tr>
+            <td>:voor en achter naam</td>
+            <td><input type="text" id="Bandnaam" name="Bandnaam" value="" required></td>
+        </tr>
+        <tr>
+            <td>Land van herkomst:</td>
+            <td><input type="text" id="afkomst" name="afkomst" value="<?php echo $rij['Land'] ?>" required></td>
+        </tr>
+        <tr>
+            <td>Aantal leden:</td>
+            <td><input type="number" id="leden" name="leden" value="<?php echo $rij['AantalLeden'] ?>" required></td>
+        </tr>
+        <tr>
+            <td>Soort muziek:</td>
+            <td><input type="text" id="muziek" name="muziek" value="<?php echo $rij['Muzieksoort'] ?>" required></td>
+        </tr>
+        <tr>
+            <td>Algemene info:</td>
+            <td><input type="textbox" id="Algemene" name="Algemene" value="<?php echo $rij['Info'] ?>"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="submit" name="submit"></td>
+        </tr>
+    </table>
+    <a href='bands_uitlees.php'>Naar band lijst</a>
+    <p>&nbsp;</p>
+  <?php
+
+  if (isset($_POST['submit'])) {
+    require('config.php');
+
+    $Bandnaam = $_POST['Bandnaam'];
+    $afkomst = $_POST['afkomst'];
+    $leden = $_POST['leden'];
+    $muziek = $_POST['muziek'];
+    $Algemene = $_POST['Algemene'];
+
+    //maak de query:
+    $opdracht = "INSERT INTO Beroeps-User VALUES (NULL, '$Naam', '$Gebruikernaam', '$Date', '$Email', '$Password', '$Telefoonnummer', '$profielfoto', '0')";
+
+    if (mysqli_query($mysqli, $opdracht)) {
+      echo " is toegevoegd!<br/>";
+    } else {
+      echo "FOUT bij toevoegen $Bandnaam!<br/>";
+      echo "Query: $opdracht <br/>";
+      echo "Foutmelding: " . mysqli_error($mysqli);
+    }
+  }
+
+  ?>
+</body>
+
+</html>
