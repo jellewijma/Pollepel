@@ -7,7 +7,7 @@ require 'config.php';
 $Search = $_POST['search'];
 
 //maak de query:
-$query = "SELECT * FROM `Beroeps-Recept` WHERE Title = '" . $Search . "' OR Category = '" . $Search . "'";
+$query = "SELECT * FROM `Beroeps_Recept` WHERE Title = '" . $Search . "' OR Category = '" . $Search . "'";
 
 //TEST: schrijf de query naar het scherm (TIJDELIJKE CODE!)
 // echo $query;
@@ -32,50 +32,41 @@ $query = "SELECT * FROM `Beroeps-Recept` WHERE Title = '" . $Search . "' OR Cate
   </div>
   <h1>Japan</h1>
   <button>Sign-in</button>
-  <div class="Menu">
-    <!-- Menu Button -->
-    <span onclick="openNav()" class="spanButton">&#9776;</span>
+    <div class="Menu">
+        <!-- Menu Button -->
+        <span onclick="openNav()" class="spanButton">&#9776;</span>
 
-    <!-- Menu -->
-    <ul id="mySidenav" class="sidenav">
-      <li>
-        <a
-          class="test"
-          href="javascript:void(0)"
-          class="closebtn"
-          onclick="closeNav()"
-        >&times;</a
-        >
-      </li>
-      <li>
-        <a class="test" href="#wrapTop" onclick="setTimeout(closeNav, 800)"
-        >ME</a
-        >
-      </li>
-      <li>
-        <a class="test" href="#photography" onclick="setTimeout(closeNav, 800)"
-        >Photography</a
-        >
-      </li>
-      <li>
-        <a
-          class="test"
-          href="#graphicDesign"
-          onclick="setTimeout(closeNav, 800)"
-        >graphic Design</a
-        >
-      </li>
-      <li>
-        <a
-          class="test"
-          href="#WebDevelopment"
-          onclick="setTimeout(closeNav, 800)"
-        >Web Development</a
-        >
-      </li>
-      <li><a class="test" href="moreInfo.html">More Info</a></li>
-    </ul>
-  </div>
+        <!-- Menu -->
+        <ul id="mySidenav" class="sidenav">
+            <li>
+                <a
+                        class="test"
+                        href="javascript:void(0)"
+                        class="closebtn"
+                        onclick="closeNav()"
+                >&times;</a
+                >
+            </li>
+            <li>
+                <a
+                        class="test"
+                        href="index.php"
+                        onclick="setTimeout(closeNav, 800)"
+                >home</a
+                >
+            </li>
+            <li>
+                <a class="test" href="mijn_recepten.php" onclick="setTimeout(closeNav, 800)"
+                >Mijn recepten</a
+                >
+            </li>
+            <li>
+                <a class="test" href="recepte_maken.php" onclick="setTimeout(closeNav, 800)"
+                >Recepten maken</a
+                >
+            </li>
+        </ul>
+    </div>
 </header>
 <main>
   <h2>Search Results</h2>

@@ -51,7 +51,7 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
     </li>
     <li>
       <a class="test" href="recepte_maken.php" onclick="setTimeout(closeNav, 800)"
-      >Recepten editen</a
+      >Recepten maken</a
       >
     </li>
   </ul>
@@ -67,7 +67,7 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
     </tr>
       <tr>
           <td>Recept foto:</td>
-          <td><input type="file" id="profielfoto" name="profielfoto" value=""></td>
+          <td><input type="file" id="Image" name="Image" value=""></td>
       </tr>
     <tr>
       <td>Caterogy:</td>
@@ -90,12 +90,13 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
     require('config.php');
 
     $Title = $_POST['Title'];
-    $profielfoto = $_POST['profielfoto'];
+    $Image = $_POST['Image'];
     $Caterogy = $_POST['Caterogy'];
     $Text = $_POST['Text'];
 
     //maak de query:
-    $opdracht = "INSERT INTO Beroeps_Recept VALUES (NULL,'$profielfoto', '$Title', '$Text', '$Caterogy')";
+    $opdracht = "INSERT INTO Beroeps_Recept VALUES (NULL,'$Image', '$Title', '$Text', '$Caterogy')";
+
 
     if (mysqli_query($mysqli, $opdracht)) {
       echo "Uw recept is toegevoegd!<br/>";
@@ -104,12 +105,19 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
       echo "Query: $opdracht <br/>";
       echo "Foutmelding: " . mysqli_error($mysqli);
     }
+    $zoekUserId = $_SESSION['User_ID'];
+    $zoekReceptId = "select Recept_ID from Beroeps_Recept order by Recept_ID desc limit 1";
+    $resultaat = mysqli_query($mysqli, $zoekReceptId);
+    $rij = mysqli_fetch_array($resultaat);
+    $antwoord = "INSERT INTO Beroeps_Kopeling VALUES ('$zoekUserId', '$rij[0]')";
+    if (mysqli_query($mysqli, $antwoord)) {
+      echo "Uw kopeling is toegevoegd!<br/>";
+    } else {
+      echo "FOUT bij koppelen van uw recept <br/>";
+      echo "Query: $opdracht <br/>";
+      echo "Foutmelding: " . mysqli_error($mysqli);
+    }
   }
-
-  $zoekUserId = $_SESSION['User_ID'];
-  $zoekReceptId = "";
-
-
   ?>
 
 </body>
