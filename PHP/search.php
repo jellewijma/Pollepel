@@ -7,7 +7,7 @@ require 'config.php';
 $Search = $_POST['search'];
 
 //maak de query:
-$query = "SELECT * FROM `Beroeps_Recept` WHERE Title = '" . $Search . "' OR Category = '" . $Search . "'";
+$query = "SELECT * FROM `Beroeps_Recept` WHERE Title LIKE '%" . $Search . "%' OR Category LIKE '%" . $Search . "%'";
 
 //TEST: schrijf de query naar het scherm (TIJDELIJKE CODE!)
 // echo $query;

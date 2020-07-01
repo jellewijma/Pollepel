@@ -1,4 +1,11 @@
 <?php
+//voeg de koppeling naar de database toe
+require 'config.php';
+session_start();
+if (!isset($_SESSION['Gebruikersnaam'])) {
+  //stuur de gerbuiker direct naar 'inlog.php'
+  header("location:index.php");
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,5 +55,28 @@
         </li>
     </ul>
 </div>
+
+<?php
+
+$query = "SELECT * FROM Beroeps_Recept WHERE Recept_ID IN (SELECT Recept_ID FROM Beroeps_Kopeling WHERE User_ID =" . $_SESSION['User_ID'] . ")";
+
+// als de opdracht goed word uitgevoerd:
+if ($Resultaat = mysqli_query($mysqli, $query)) {
+  while ($Recept = mysqli_fetch_array($Resultaat)) {
+    echo "<table border=1 cellspacing='0' cellpadding='3'>";
+    echo "<tr><td>" . $Recept['Image'] . "</td></tr>";
+    echo "<tr><td>" . $Recept['Title'] . "</td></tr>";
+    echo "<tr><td>" . $Recept['Text'] . "</td></tr>";
+    echo "<tr><td>" . $Recept['Category'] . "</td></tr>";
+    echo "</table>";
+  }
+} // anders:
+else {
+  echo "<p>FOUT bij opzoeken.</p>";
+  echo mysqli_error($mysqli); //LET OP: tijdelijk toegevoegen
+}
+
+?>
+
 </body>
 </html>
