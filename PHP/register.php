@@ -33,7 +33,7 @@
         </tr>
         <tr>
             <td>profiel foto:</td>
-            <td><input type="file" id="profielfoto" name="userfile[]" value=""></td>
+            <td><input type="file" id="profielfoto" name="profielfoto" value=""></td>
         </tr>
         <tr>
             <td></td>
@@ -51,10 +51,34 @@
     $Email = $_POST['Email'];
     $Password = $_POST['Password'];
     $Telefoonnummer = $_POST['Telefoonnummer'];
-    $profielfoto = $_POST['profielfoto'];
+
+    // new
+
+    $Afbeelding = $_FILES['profielfoto'];
+
+    $Temp = $Afbeelding['tmp_name'];
+    $Name = $Afbeelding['name'];
+    $Type = $Afbeelding['type'];
+    $Map = "..//Resorce/ProfielFoto/";
+
+    $Toegestaan = array("image/jpeg", "image/gif", "image/png", "image/jpg");
+
+    if (in_array($Type, $Toegestaan)) {
+      echo "Verplaats " . $Temp . " naar " . $Map . $Name . "...<br/>";
+
+      if (move_uploaded_file($Temp, $Map.$Name)) {
+        echo "Het is gelukt";
+      } else {
+        echo "Het is niet gelukt";
+      }
+    } else {
+      echo "Dit bestandtype ($Type) is niet toegestaan!<br/>";
+    }
+
+    echo $Name;
 
     //maak de query:
-    $opdracht = "INSERT INTO `Beroeps_User` VALUES (NULL, '$Naam', '$Gebruikernaam', '$Date', '$Email', '$Password', '$Telefoonnummer', '$profielfoto', '0')";
+    $opdracht = "INSERT INTO `Beroeps_User` VALUES (NULL, '$Naam', '$Gebruikernaam', '$Date', '$Email', '$Password', '$Telefoonnummer', '$Name', '0')";
 
     if (mysqli_query($mysqli, $opdracht)) {
       echo "U bent toegevoegd!<br/>";
@@ -65,94 +89,8 @@
     }
 
 
-    $table = 'Beroeps_User';
-
-
-
-    $phpFileUploadErrors = array(
-        0 => 'There is no error, the file uploaded with success',
-        1 => 'The uploaded file exceeds the upload_max_filesize directive in php.ini',
-        2 => 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form',
-        3 => 'The uploaded file was only partially uploaded',
-        4 => 'No file was uploaded',
-        6 => 'Missing a temporary folder',
-        7 => 'Failed to write file to disk.',
-        8 => 'A PHP extension stopped the file upload.',
-    );
-
-    //$_$FILES global variable
-if(isset($_FILES['userfile'])){
-    
-    $file_array = reArrayFiles($_FILES['userfile']);
-    //pre_r($file_array);
-    for ($i=0;$i<count($file_array);$i++){
-        if ($file_array[$i]['error']) 
-        {
-            ?> <div class="alert alert-danger"> 
-            <?php echo $file_array[$i]['Name'].' - '.$phpFileUploadErrors[$file_array[$i]['error']]; 
-            ?> </div> <?php
-        }
-        else {
-            
-            $extensions = array('jpg','png','gif','jpeg');
-            
-            $file_ext = explode('.',$file_array[$i]['Name']);
-            
-            $Name = $file_ext[0];
-            $Name = preg_replace("!-!"," ",$Name);
-            $Name = ucwords($Name);
-            
-            $file_ext = end($file_ext);
-            
-            if (!in_array($file_ext, $extensions)) 
-            {
-                ?> <div class="alert alert-danger"> 
-                <?php echo "$Name - Invalid file extension!"; 
-                ?> </div> <?php
-            }
-            else {
-                
-                $img_dir = 'Resorce/web/profile/'.$file_array[$i]['Name'];
-                
-                move_uploaded_file($file_array[$i]['tmp_name'], $img_dir);
-                
-                $sql = "INSERT IGNORE INTO $table (name,img_dir) VALUES('$Name','$img_dir')";
-                $mysqli->query($sql) or die($mysqli->error);
-                
-                ?> <div class="alert alert-success"> 
-                <?php echo $Name.' - '.$phpFileUploadErrors[$file_array[$i]['error']]; 
-                ?> </div> <?php
-            }
-        }
-    }
-}
-
-
-function reArrayFiles(&$file_post) {
-
-    $file_ary = array();
-    $file_count = count($file_post['Name']);
-    $file_keys = array_keys($file_post);
-
-    for ($i=0; $i<$file_count; $i++) {
-        foreach ($file_keys as $key) {
-            $file_ary[$i][$key] = $file_post[$key][$i];
-        }
-    }
-
-    return $file_ary;
-}
-
-function pre_r($array){
-    echo '<pre>';
-    print_r($array);
-    echo '</pre>';
-}
-
-
   }
-
-  ?>
+?>
 </body>
     <a href="inlog.php">Inloggen</a>
 </html>
