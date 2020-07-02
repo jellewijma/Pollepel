@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+if (!isset($_SESSION['Gebruikersnaam'])) {
+  $switch = "inlog";
+} else {
+  $switch = "uitlog";
+}
+
 //voeg de koppeling naar de database toe
 require 'config.php';
 

@@ -75,8 +75,6 @@
       echo "Dit bestandtype ($Type) is niet toegestaan!<br/>";
     }
 
-    echo $Name;
-
     //maak de query:
     $opdracht = "INSERT INTO `Beroeps_User` VALUES (NULL, '$Naam', '$Gebruikernaam', '$Date', '$Email', '$Password', '$Telefoonnummer', '$Name', '0')";
 

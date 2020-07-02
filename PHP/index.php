@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+
+require 'config.php';
+
 session_start();
 if (!isset($_SESSION['Gebruikersnaam'])) {
 $switch = "inlog";
@@ -61,6 +64,7 @@ $switch = "inlog";
     </div>
     <h1>Japan</h1>
     <button><a href="<?php echo $switch; ?>.php"><?php echo $switch; ?></a></button>
+
 </header>
 <main>
     <h2>Welcome</h2>

@@ -1,4 +1,5 @@
 <?php
+include('config.php');
 //start de session
 session_start();
 //als de gebruiker NIET is ingelogd
@@ -59,11 +60,11 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
 
 <h2>Recept toevoegen</h2>
 
-<form name="form1" action="" method="POST">
+<form name="form1" action="" method="POST" enctype="multipart/form-data">
   <table width="400" border="0">
     <tr>
       <td>Title recept:</td>
-      <td><input type="text" id="Title" name="Title" value="<?php echo $rij['Title'] ?>" required></td>
+      <td><input type="text" id="Title" name="Title" value="" required></td>
     </tr>
       <tr>
           <td>Recept foto:</td>
@@ -71,7 +72,7 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
       </tr>
     <tr>
       <td>Caterogy:</td>
-      <td><input type="text" id="Caterogy" name="Caterogy" value="<?php echo $rij['Caterogy'] ?>" required></td>
+      <td><input type="text" id="Caterogy" name="Caterogy" value="" required></td>
     </tr>
     <tr>
       <td>Text:</td>
@@ -83,19 +84,37 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
     </tr>
   </table>
   <a href='mijn_recepten.php'>Naar Mijn recepten</a>
-  <p>&nbsp;</p>
   <?php
 
   if (isset($_POST['submit'])) {
     require('config.php');
 
     $Title = $_POST['Title'];
-    $Image = $_POST['Image'];
     $Caterogy = $_POST['Caterogy'];
     $Text = $_POST['Text'];
 
+    $Image = $_FILES['Image'];
+    $Temp = $Image['tmp_name'];
+    $Name = $Image['name'];
+    $Type = $Image['type'];
+    $Map = "..//Resorce/ReceptFoto/";
+
+    $Toegestaan = array("image/jpeg", "image/gif", "image/png", "image/jpg");
+
+    if (in_array($Type, $Toegestaan)) {
+      echo "Verplaats " . $Temp . " naar " . $Map . $Name . "...<br/>";
+
+      if (move_uploaded_file($Temp, $Map.$Name)) {
+        echo "Het is gelukt";
+      } else {
+        echo "Het is niet gelukt";
+      }
+    } else {
+      echo "Dit bestandtype ($Type) is niet toegestaan!<br/>";
+    }
+
     //maak de query:
-    $opdracht = "INSERT INTO Beroeps_Recept VALUES (NULL,'$Image', '$Title', '$Text', '$Caterogy')";
+    $opdracht = "INSERT INTO Beroeps_Recept VALUES (NULL,'$Name', '$Title', '$Text', '$Caterogy')";
 
 
     if (mysqli_query($mysqli, $opdracht)) {
