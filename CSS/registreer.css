@@ -1,0 +1,197 @@
+*{
+    font-family: 'Stylish', sans-serif;
+    color: whitesmoke;
+}
+
+/* Menu */
+
+.spanButton {
+    position: fixed;
+    top: 5vh;
+    right: 50px;
+    font-family: "Lato", sans-serif;
+    font-size: 30px;
+    cursor: pointer;
+    color: #cdcdcd;
+    z-index: 1;
+    transition: color 0.5s ease;
+}
+
+.spanButton:hover{
+    color: #04ED41;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.3s ease-out;
+    padding: 0px;
+    scroll-behavior: smooth;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.myClasses {
+    height: 0;
+    width: 50%;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    background-color: #cdcdcd;
+    overflow-x: hidden;
+    transition: 0.3s ease-out;
+    scroll-behavior: smooth;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.lijst {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+    justify-content: space-around;
+}
+
+.lijst ul {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.myClasses a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    color: #232323;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.first {
+    padding-top: 110px !important;
+}
+
+.sidenav a {
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    scroll-behavior: smooth;
+}
+
+.sidenav .closebtn {
+    padding-top: 0px;
+    position: absolute;
+    top: 35px;
+    right: 50px;
+    font-size: 36px;
+    margin-left: 50px;
+    scroll-behavior: smooth;
+}
+
+
+/* Body */
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-image: url("background/Japan.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+/* h */
+h1 {
+    width: 100vw;
+    text-align: center;
+    margin-top: 20px;
+    color: #1c2229;
+}
+
+h2 {
+    width: 500px;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0px 20px 0px ;
+}
+/* Form */
+
+form {
+    display: flex;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper{
+    background-color: #262626;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.naam{
+    display: flex;
+    justify-content: space-around;
+}
+
+.gegevens{
+    display: flex;
+    justify-content: space-around;
+}
+
+.info{
+    display: flex;
+    justify-content: space-around;
+}
+
+.file{
+    display: flex;
+    justify-content: space-around;
+}
+
+input{
+    width: 200px;
+    color: #1c2229;
+    margin-top: 20px;
+
+}
+
+.inputfile {
+    color: whitesmoke;
+}
+
+.search {
+    display: inline-block;
+    justify-content: space-between;
+}

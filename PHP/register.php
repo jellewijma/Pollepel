@@ -1,45 +1,72 @@
 <?php include('config.php')?>
 
 <html>
-
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="..//CSS/registreer.css">
+    <script src="../JS/JS.js"></script>
+    <title>Registratie</title>
+</head>
 <body>
-<h2>registreren</h2>
+<div class="Menu">
+    <!-- Menu Button -->
+    <span onclick="openNav()" class="spanButton">&#9776;</span>
+
+    <!-- Menu -->
+    <ul id="mySidenav" class="sidenav">
+        <li>
+            <a
+                    class="test"
+                    href="javascript:void(0)"
+                    class="closebtn"
+                    onclick="closeNav()"
+            >&times;</a
+            >
+        </li>
+        <li>
+            <a
+                    class="test"
+                    href="index.php"
+                    onclick="setTimeout(closeNav, 800)"
+            >home</a
+            >
+        </li>
+        <li>
+            <a class="test" href="recepte_maken.php" onclick="setTimeout(closeNav, 800)"
+            >Recepten maken</a
+            >
+        </li>
+        <li>
+            <a class="test" href="mijn_recepten.php" onclick="setTimeout(closeNav, 800)"
+            >Mijn recepten</a
+            >
+        </li>
+    </ul>
+</div>
+
+<h1>registreren</h1>
 
 <form name="form1" action="" method="POST" enctype="multipart/form-data">
-    <table width="400" border="0">
-        <tr>
-            <td>Volledigenaam:</td>
-            <td><input type="text" id="Naam" name="Naam" value="" required></td>
-        </tr>
-        <tr>
-            <td>Gebruikernaam:</td>
-            <td><input type="text" id="Gebruikernaam" name="Gebruikernaam" value="" required></td>
-        </tr>
-        <tr>
-            <td>Geboortedatum:</td>
-            <td><input type="date" id="Date" name="Date" value="" required></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td><input type="email" id="Email" name="Email" value="" required></td>
-        </tr>
-        <tr>
-            <td>wachtwoord:</td>
-            <td><input type="password" id="Password" name="Password" value="" required></td>
-        </tr>
-        <tr>
-            <td>telefoon nummer:</td>
-            <td><input type="text" id="Telefoonnummer" name="Telefoonnummer" value=""></td>
-        </tr>
-        <tr>
-            <td>profiel foto:</td>
-            <td><input type="file" id="profielfoto" name="profielfoto" value=""></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><input type="submit" value="submit" name="submit"></td>
-        </tr>
-    </table>
+    <div class="wrapper">
+        <h2>Melden gratis aan</h2>
+        <div class="naam">
+            <input type="text" id="Naam" name="Naam" placeholder="volledige naam" required>
+            <input type="text" id="Gebruikernaam" name="Gebruikernaam" placeholder="Gebruikersnaam" required>
+        </div>
+        <div class="gegevens">
+            <input type="email" id="Email" name="Email" placeholder="Email" required>
+            <input type="Pasword" id="Password" name="Password" placeholder="Wachtwoord"  required>
+        </div>
+        <div class="info">
+            <input type="date" id="Date" name="Date" placeholder="Geboortedatum" required>
+            <input type="text" id="Telefoonnummer" name="Telefoonnummer" placeholder="Telefoon nummer">
+        </div>
+        <div class="file">
+            <input class="inputfile" type="file" id="profielfoto" name="profielfoto" value="">
+            <input type="submit" value="submit" name="submit">
+        </div>
+    </div>
+</form>
   <?php
 
   if (isset($_POST['submit'])) {
@@ -80,6 +107,8 @@
 
     if (mysqli_query($mysqli, $opdracht)) {
       echo "U bent toegevoegd!<br/>";
+      header("Location: inlog.php");
+      exit;
     } else {
       echo "FOUT bij toevoegen van uw profiel!<br/>";
       echo "Query: $opdracht <br/>";
@@ -90,5 +119,5 @@
   }
 ?>
 </body>
-    <a href="inlog.php">Inloggen</a>
+
 </html>

@@ -1,0 +1,27 @@
+.recept{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.info{
+ max-width: 400px;
+    background-color: #C26D6D;
+    color: whitesmoke;
+}
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.title{
+
+}
+
+.text{
+
+}

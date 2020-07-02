@@ -26,7 +26,9 @@ $query = "SELECT * FROM `Beroeps_Recept` WHERE Title LIKE '%" . $Search . "%' OR
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/Style.css"/>
+    <link rel="stylesheet" href="../CSS/recepten.css">
   <script src="../JS/JS.js"></script>
 </head>
 <body>
@@ -76,18 +78,22 @@ $query = "SELECT * FROM `Beroeps_Recept` WHERE Title LIKE '%" . $Search . "%' OR
     </div>
 </header>
 <main>
-  <h2>Search Results</h2>
+  <h2 class="searchtitle">Search Results</h2>
   <?php
   // als de opdracht goed word uitgevoerd:
   if($Resultaat = mysqli_query($mysqli, $query))
   {
     while ($Recept = mysqli_fetch_array($Resultaat)){
-      echo "<table border=1 cellspacing='0' cellpadding='3'>";
-      echo "<tr><td>" . $Recept['Image'] . "</td></tr>";
-      echo "<tr><td>" . $Recept['Title'] . "</td></tr>";
-      echo "<tr><td>" . $Recept['Text'] . "</td></tr>";
-      echo "<tr><td>" . $Recept['Category'] . "</td></tr>";
-      echo "</table>";
+        echo "<div class='recept'>";
+        echo "<img class='imgrecept' src='..//Resorce/ReceptFoto/" . $Recept['Image'] . "' width='200px'  height='200px'/>";
+        echo "<div class='info'>";
+        echo "<div class='top'>";
+        echo "<div><h2 class='title'>" . $Recept['Title'] . "</h2></div>";
+        echo "<div class='category'><p>" . $Recept['Category'] . "</p></div>";
+        echo "</div>";
+        echo "<div class='text'>" . $Recept['Text'] . "</div>";
+        echo " </div>";
+        echo " </div>";
     }
   }
 // anders:

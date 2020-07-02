@@ -7,6 +7,9 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="..//CSS/inlog.css">
+    <script src="../JS/JS.js"></script>
     <title>Inlog</title>
 </head>
 
@@ -44,27 +47,62 @@ if (isset($_POST['inlog'])) {
   }
 } else {
   ?>
-    <h2>LOG IN:</h2>
-    <p></p>
+    <div class="Menu">
+        <!-- Menu Button -->
+        <span onclick="openNav()" class="spanButton">&#9776;</span>
+
+        <!-- Menu -->
+        <ul id="mySidenav" class="sidenav">
+            <li>
+                <a
+                        class="test"
+                        href="javascript:void(0)"
+                        class="closebtn"
+                        onclick="closeNav()"
+                >&times;</a
+                >
+            </li>
+            <li>
+                <a
+                        class="test"
+                        href="index.php"
+                        onclick="setTimeout(closeNav, 800)"
+                >home</a
+                >
+            </li>
+            <li>
+                <a class="test" href="recepte_maken.php" onclick="setTimeout(closeNav, 800)"
+                >Recepten maken</a
+                >
+            </li>
+            <li>
+                <a class="test" href="mijn_recepten.php" onclick="setTimeout(closeNav, 800)"
+                >Mijn recepten</a
+                >
+            </li>
+        </ul>
+    </div>
+    <h1>LOG IN:</h1>
     <form method="post" action="">
-        <table border="0">
-            <tr>
-                <td>Gebruikernaam</td>
-                <td><input type="text" name="Gebruikersnaam" id=""></td>
-            </tr>
-            <tr>
-                <td>wachtwoord</td>
-                <td><input type="password" name="Wachtwoord" id=""></td>
-            </tr>
-            <tr>
-                <td>&nbsp</td>
-                <td><input type="submit" name="inlog" value="LOG IN"></td>
-            </tr>
-        </table>
+        <div class="wrapper">
+            <h2>Melden gratis aan</h2>
+            <div class="naam">
+                <input type="text" id="Gebruikersnaam" name="Gebruikersnaam" placeholder="Gebruikersnaam" required>
+            </div>
+            <div class="gegevens">
+                <input type="Pasword" id="Wachtwoord" name="Wachtwoord" placeholder="Wachtwoord"  required>
+            </div>
+            <div class="file">
+                <input type="submit" value="inlog" name="inlog">
+            </div>
+            <div class="file">
+                <p>Inlog gegevens: jelle/wijma</p>
+                <button><a href="register.php">Nog geen gebruiker?</a></button>
+            </div>
+        </div>
     </form>
-    <p>Inlog gegevens: jelle/wijma</p><br>
-    <p>Nog geen gebruiker?</p>
-    <button><a href="register.php">registreer</a></button>
+
+
   <?php
 }
 ?>

@@ -19,7 +19,9 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/Style.css"/>
+    <link rel="stylesheet" href="../CSS/recepten.css">
     <script src="../JS/JS.js"></script>
 </head>
 <body>
@@ -53,7 +55,7 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
         </li>
         <li>
             <a class="test" href="recepte_maken.php" onclick="setTimeout(closeNav, 800)"
-            >Recepten editen</a
+            >Recepten maken</a
             >
         </li>
     </ul>
@@ -71,12 +73,13 @@ if (!isset($_SESSION['Gebruikersnaam'])) {
 </header>
 <div class="user">
     <?php
-    $opdracht = "SELECT * FROM Beroeps_User";
+    $opdracht = "SELECT * FROM Beroeps_User WHERE User_ID =" . $_SESSION['User_ID'];
     $resultaat = mysqli_query($mysqli, $opdracht);
     while ($profielfoto = mysqli_fetch_array($resultaat)){
-        echo "<img src";
+        echo "<tr><td> <img class='imgprofile' src='..//Resorce/ProfielFoto/" . $profielfoto['UserProfile'] . "'/></td></tr>";
     }
     ?>
+    <p>Welkom <?php echo $_SESSION['Gebruikersnaam']?></p>
 </div>
 <?php
 $query = "SELECT * FROM Beroeps_Recept WHERE Recept_ID IN (SELECT Recept_ID FROM Beroeps_Kopeling WHERE User_ID =" . $_SESSION['User_ID'] . ")";
@@ -84,14 +87,16 @@ $query = "SELECT * FROM Beroeps_Recept WHERE Recept_ID IN (SELECT Recept_ID FROM
 // als de opdracht goed word uitgevoerd:
 if ($Resultaat = mysqli_query($mysqli, $query)) {
   while ($Recept = mysqli_fetch_array($Resultaat)) {
-    echo "<table border=1 cellspacing='0' cellpadding='3'>";
-    echo "<tr><td>" . $Recept['Image'] . "</td></tr>";
-    echo "<tr><td>" . $Recept['Title'] . "</td></tr>";
-    echo "<tr><td>" . $Recept['Text'] . "</td></tr>";
-    echo "<tr><td>" . $Recept['Category'] . "</td></tr>";
-    echo "<tr><td> <a href='recepten_aanpassen.php?Recept_ID=" . $Recept['Recept_ID'] . "'>Wijzigen</a></td></td>";
-    echo "<tr><td> <a href='recept_verwijderen.php?Recept_ID=" . $Recept['Recept_ID'] . "'>Verwijder</a></td></tr>";
-    echo "</table>";
+    echo "<div class='recept'>";
+    echo "<img class='imgrecept' src='..//Resorce/ReceptFoto/" . $Recept['Image'] . "' width='200px'  height='200px'/>";
+    echo "<div class='info'>";
+    echo "<div class='top'>";
+    echo "<div><h2 class='title'>" . $Recept['Title'] . "</h2></div>";
+    echo "<div class='category'><p>" . $Recept['Category'] . "</p></div>";
+    echo "</div>";
+    echo "<div class='text'>" . $Recept['Text'] . "</div>";
+    echo " </div>";
+    echo " </div>";
   }
 } // anders:
 else {
